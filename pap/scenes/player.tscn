@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=3 uid="uid://7wq73vajuirb"]
+
+[ext_resource type="Script" path="res://script/player.gd" id="1_cebk3"]
+[ext_resource type="Texture2D" uid="uid://g4rwfblpc7e8" path="res://back_idle.aseprite" id="2_2hlwp"]
+[ext_resource type="Texture2D" uid="uid://0ed0jygv6dlr" path="res://back_walk.aseprite" id="3_ya64o"]
+[ext_resource type="Texture2D" uid="uid://cmd0c2no6sd26" path="res://back_walk2.aseprite" id="4_njwbq"]
+[ext_resource type="Texture2D" uid="uid://bxsltieu1m16v" path="res://front_idle.aseprite" id="5_3se3j"]
+[ext_resource type="Texture2D" uid="uid://dk1q16gie3tt6" path="res://front_walk.aseprite" id="6_b0yfl"]
+[ext_resource type="Texture2D" uid="uid://la8ipst14d62" path="res://front_walk2.aseprite" id="7_sfxwi"]
+[ext_resource type="Texture2D" uid="uid://crctqtilhpod0" path="res://side_idle.aseprite" id="8_kvlyh"]
+[ext_resource type="Texture2D" uid="uid://bd1usf1q4awv8" path="res://side_walk.aseprite" id="9_4268v"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jcfje"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2hlwp")
+}],
+"loop": true,
+"name": &"back_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ya64o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2hlwp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_njwbq")
+}],
+"loop": true,
+"name": &"back_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_3se3j")
+}],
+"loop": true,
+"name": &"front_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_b0yfl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3se3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_sfxwi")
+}],
+"loop": true,
+"name": &"front_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_kvlyh")
+}],
+"loop": true,
+"name": &"side_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_4268v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kvlyh")
+}],
+"loop": true,
+"name": &"side_walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0x0w"]
+radius = 5.0
+height = 12.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 3
+script = ExtResource("1_cebk3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(19, -15)
+sprite_frames = SubResource("SpriteFrames_jcfje")
+animation = &"front_walk"
+frame_progress = 0.204019
+offset = Vector2(0, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(18, -13)
+shape = SubResource("CapsuleShape2D_t0x0w")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
