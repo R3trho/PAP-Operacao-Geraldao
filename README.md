@@ -9,6 +9,12 @@ Caso haja algum problema avise me.
 
 
 
+
+
+
+
+
+
 Caso esteja a ver este ficheiro, significa que está a perder por volta de 10 segundos da sua vida;
 
 Mas já que chegou aqui vou deixar uma receita de como fazer panquecas:
