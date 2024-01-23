@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://boi1m37uvqclb"]
+[gd_scene load_steps=18 format=3 uid="uid://boi1m37uvqclb"]
 
 [ext_resource type="Texture2D" uid="uid://b1vk3pfv40hu" path="res://spritestemplate/tilesets/plains.png" id="1_gr7wf"]
 [ext_resource type="Texture2D" uid="uid://upass3i86s6w" path="res://spritestemplate/tilesets/grass.png" id="2_7srot"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://xm6fywcjbf06" path="res://scenes/enemy2.tscn" id="8_y4t85"]
 [ext_resource type="PackedScene" uid="uid://bd0cq6kyis4fn" path="res://enemy3.tscn" id="9_5xkh8"]
 [ext_resource type="PackedScene" uid="uid://df2hofdd0wjd7" path="res://enemy4.tscn" id="10_2y3fd"]
+[ext_resource type="AudioStream" uid="uid://b046ponrxrwo6" path="res://musica_ferando_verda (1).wav" id="11_xaoor"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ha7yh"]
 texture = ExtResource("1_gr7wf")
@@ -866,3 +867,8 @@ position = Vector2(943, 474)
 
 [node name="enemy4" parent="." instance=ExtResource("10_2y3fd")]
 position = Vector2(197, 401)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(3, 0)
+stream = ExtResource("11_xaoor")
+autoplay = true
