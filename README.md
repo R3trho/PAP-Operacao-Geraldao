@@ -1,13 +1,22 @@
 # PAP OperacaoGeraldao :1234:
-Este projeto é pretendido ser o projeto para a PAP.
-O projeto é feito em Godot Engine, então caso esteja a tentar acessar ao projeto, use a mesma aplicação.
-
-Caso haja algum problema avise me.
+Projeto para a PAP;
+Jogo RPG em 2D feito em GodotEngine.
 
 
+## JOGO
+Neste momento o jogo  permite:
+-Movimentação pelo Mapa;
+-Ouvir a soundtrack do jogo.
 
 
 
+
+
+## Tecnologias utilizadas  neste projeto 
+-Plataforma GitHub;
+-GitHub Desktop;
+-Git;
+-Visual Studio.
 
 
 
