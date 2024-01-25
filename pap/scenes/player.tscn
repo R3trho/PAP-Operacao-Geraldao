@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://7wq73vajuirb"]
+[gd_scene load_steps=13 format=3 uid="uid://7wq73vajuirb"]
 
 [ext_resource type="Script" path="res://script/player.gd" id="1_cebk3"]
 [ext_resource type="Texture2D" uid="uid://g4rwfblpc7e8" path="res://back_idle.aseprite" id="2_2hlwp"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://la8ipst14d62" path="res://front_walk2.aseprite" id="7_sfxwi"]
 [ext_resource type="Texture2D" uid="uid://crctqtilhpod0" path="res://side_idle.aseprite" id="8_kvlyh"]
 [ext_resource type="Texture2D" uid="uid://bd1usf1q4awv8" path="res://side_walk.aseprite" id="9_4268v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0x0w"]
+radius = 6.0
+height = 12.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jcfje"]
 animations = [{
@@ -76,14 +80,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0x0w"]
-radius = 5.0
-height = 12.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4gds8"]
+radius = 11.0
+height = 36.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 3
 script = ExtResource("1_cebk3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(18, -13)
+shape = SubResource("CapsuleShape2D_t0x0w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(19, -15)
@@ -92,10 +100,17 @@ animation = &"front_walk"
 frame_progress = 0.204019
 offset = Vector2(0, -15)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(18, -13)
-shape = SubResource("CapsuleShape2D_t0x0w")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="player_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox" groups=["player"]]
+position = Vector2(18, -25)
+shape = SubResource("CapsuleShape2D_4gds8")
+
+[node name="attack_cooldown" type="Timer" parent="."]
+
+[connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
+[connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
