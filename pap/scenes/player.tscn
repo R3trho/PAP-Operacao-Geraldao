@@ -82,22 +82,21 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4gds8"]
 radius = 11.0
-height = 36.0
+height = 34.0
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 3
 script = ExtResource("1_cebk3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(18, -13)
+position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_t0x0w")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(19, -15)
+position = Vector2(1, -7)
 sprite_frames = SubResource("SpriteFrames_jcfje")
-animation = &"front_walk"
-frame_progress = 0.204019
+animation = &"front_idle"
 offset = Vector2(0, -15)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -107,7 +106,7 @@ drag_vertical_enabled = true
 [node name="player_hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox" groups=["player"]]
-position = Vector2(18, -25)
+position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_4gds8")
 
 [node name="attack_cooldown" type="Timer" parent="."]

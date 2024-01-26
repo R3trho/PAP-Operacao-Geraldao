@@ -4,7 +4,7 @@ var emeny_Attack_cooldown = true
 var health = 100
 var player_alive = true
 
-const SPEED = 35.0
+const SPEED = 40.0
 var current_dir = "none"
 
 func _ready():
