@@ -7,6 +7,7 @@ Jogo RPG em 2D feito em GodotEngine.
 Neste momento o jogo  permite:
 - Movimentação pelo Mapa;
 - Ouvir a soundtrack do jogo.
+- Interação com inimigos
 
 
 
