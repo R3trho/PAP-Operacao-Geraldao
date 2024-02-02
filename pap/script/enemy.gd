@@ -18,6 +18,7 @@ func _physics_process(delta):
 			
 	else:
 		$AnimatedSprite2D.play("Idle")
+	Move(delta)
 
 func _on_detection_area_body_entered(body):
 	player = body
@@ -30,3 +31,9 @@ func _on_detection_area_body_exited(body):
 
 func enemy():
 	pass
+
+func Move(delta):
+
+	if (player):
+		var Goto = (player.position - position).normalized()
+		move_and_slide()
