@@ -23,22 +23,22 @@ func _physics_process(delta):
 
 @warning_ignore("unused_parameter")
 func player_movement(delta):
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("Direita"):
 		current_dir = "right"
 		play_anim(1)
 		velocity.x = SPEED
 		velocity.y = 0
-	elif Input.is_action_pressed("ui_left"):
+	elif Input.is_action_pressed("Esquerda"):
 		current_dir = "left"
 		play_anim(1)
 		velocity.x = -SPEED
 		velocity.y = 0
-	elif Input.is_action_pressed("ui_down"):
+	elif Input.is_action_pressed("Baixo"):
 		current_dir = "down"
 		play_anim(1)
 		velocity.y = SPEED
 		velocity.x = 0
-	elif Input.is_action_pressed("ui_up"):
+	elif Input.is_action_pressed("Cima"):
 		current_dir = "up"
 		play_anim(1)
 		velocity.y = -SPEED
