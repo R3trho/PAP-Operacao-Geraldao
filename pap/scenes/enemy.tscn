@@ -152,6 +152,7 @@ z_as_relative = false
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_rx88x")
 animation = &"Idle"
+frame_progress = 0.0825069
 offset = Vector2(0, -6)
 
 [node name="detection_area" type="Area2D" parent="."]
