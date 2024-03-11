@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://celq8rlbflnik"]
 
-[ext_resource type="Script" path="res://script/Maincode.gd" id="1_nms1a"]
+[ext_resource type="Script" path="res://scripts/Maincode.gd" id="1_nms1a"]
 
 [node name="Maincode" type="Node2D"]
 position = Vector2(4, 1)

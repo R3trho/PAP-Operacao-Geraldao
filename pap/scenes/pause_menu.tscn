@@ -1,0 +1,133 @@
+[gd_scene load_steps=6 format=3 uid="uid://dd1neo5i16f2j"]
+
+[sub_resource type="GDScript" id="GDScript_pdvid"]
+script/source = "extends Control
+
+func _ready():
+	$AnimationPlayer.play(\"RESET\")
+	visible=false
+
+func resume():
+	get_tree().paused = false
+	$AnimationPlayer.play_backwards(\"blur\")
+	
+func _unhandled_input(event):
+	if event.is_action_pressed('ui_cancel'):
+		visible = true
+		get_tree().paused = true
+	
+func pause():
+	get_tree().paused = true
+	$AnimationPlayer.play(\"blur\")
+	
+func testEsc():
+	if Input.is_action_just_pressed(\"esc\") and get_tree().paused:
+		pause()
+		visible=false
+	elif Input.is_action_just_pressed(\"esc\") and get_tree().paused:
+		resume()
+
+func _on_resume_pressed():
+	resume()
+
+
+func _on_restart_pressed():
+	get_tree().reload_current_scene()
+
+
+func _on_quit_pressed():
+	get_tree().quit()
+
+func _process(delta):
+	testEsc()
+"
+
+[sub_resource type="Shader" id="Shader_prx24"]
+code = "shader_type canvas_item;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_srwvn"]
+shader = SubResource("Shader_prx24")
+
+[sub_resource type="Animation" id="Animation_uuhg0"]
+resource_name = "blur"
+length = 0.3
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ksfjo"]
+_data = {
+"blur": SubResource("Animation_uuhg0")
+}
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_pdvid")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_srwvn")
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 1153.0
+offset_bottom = 648.0
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = -175.0
+offset_right = 163.0
+offset_bottom = 175.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Resume" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Resume"
+
+[node name="Restart" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Quit" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ksfjo")
+}
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
