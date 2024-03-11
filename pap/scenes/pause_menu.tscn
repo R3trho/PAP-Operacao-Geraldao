@@ -3,46 +3,37 @@
 [sub_resource type="GDScript" id="GDScript_pdvid"]
 script/source = "extends Control
 
-func _ready():
-	$AnimationPlayer.play(\"RESET\")
-	visible=false
+var is_paused = false
 
-func resume():
-	get_tree().paused = false
-	$AnimationPlayer.play_backwards(\"blur\")
-	
-func _unhandled_input(event):
-	if event.is_action_pressed('ui_cancel'):
-		visible = true
-		get_tree().paused = true
-	
-func pause():
-	get_tree().paused = true
-	$AnimationPlayer.play(\"blur\")
-	
-func testEsc():
-	if Input.is_action_just_pressed(\"esc\") and get_tree().paused:
-		pause()
-		visible=false
-	elif Input.is_action_just_pressed(\"esc\") and get_tree().paused:
-		resume()
+func _input(event):
+	if event.is_action_pressed(\"esc\"):
+		TogglePaused()
 
-func _on_resume_pressed():
-	resume()
+func Resume():
+	TogglePaused()
 
-
-func _on_restart_pressed():
+func Restart():
+	TogglePaused()
 	get_tree().reload_current_scene()
+	
+	
+func Exit():
+	TogglePaused()
+	
+	get_tree().change_scene_to_file(\"res://scenes/maincode.tscn\")
 
 
-func _on_quit_pressed():
-	get_tree().quit()
 
-func _process(delta):
-	testEsc()
+func TogglePaused():
+	is_paused = !is_paused
+		
+	get_tree().paused = is_paused
+	self.is_paused = is_paused
+	
+	visible = is_paused
 "
 
-[sub_resource type="Shader" id="Shader_prx24"]
+[sub_resource type="Shader" id="Shader_d4sul"]
 code = "shader_type canvas_item;
 
 void vertex() {
@@ -60,7 +51,7 @@ void fragment() {
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_srwvn"]
-shader = SubResource("Shader_prx24")
+shader = SubResource("Shader_d4sul")
 
 [sub_resource type="Animation" id="Animation_uuhg0"]
 resource_name = "blur"
@@ -128,6 +119,6 @@ libraries = {
 "": SubResource("AnimationLibrary_ksfjo")
 }
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Resume" to="." method="Resume"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Restart" to="." method="Restart"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Quit" to="." method="Exit"]

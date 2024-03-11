@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://7wq73vajuirb"]
+[gd_scene load_steps=15 format=3 uid="uid://7wq73vajuirb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_cebk3"]
 [ext_resource type="Texture2D" uid="uid://g4rwfblpc7e8" path="res://back_idle.aseprite" id="2_2hlwp"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://la8ipst14d62" path="res://front_walk2.aseprite" id="7_sfxwi"]
 [ext_resource type="Texture2D" uid="uid://crctqtilhpod0" path="res://side_idle.aseprite" id="8_kvlyh"]
 [ext_resource type="Texture2D" uid="uid://bd1usf1q4awv8" path="res://side_walk.aseprite" id="9_4268v"]
+[ext_resource type="PackedScene" uid="uid://dd1neo5i16f2j" path="res://scenes/pause_menu.tscn" id="10_rokty"]
+[ext_resource type="PackedScene" uid="uid://bekitu7sd6c3" path="res://scenes/death.tscn" id="11_4jsgj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0x0w"]
 radius = 6.0
@@ -111,6 +113,16 @@ shape = SubResource("CapsuleShape2D_4gds8")
 
 [node name="attack_cooldown" type="Timer" parent="."]
 wait_time = 0.578
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_rokty")]
+visible = false
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Death" parent="CanvasLayer2" instance=ExtResource("11_4jsgj")]
+visible = false
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]

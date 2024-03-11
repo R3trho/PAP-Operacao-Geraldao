@@ -7,6 +7,8 @@ var player_alive = true
 const SPEED = 40.0
 var current_dir = "none"
 
+@onready var death_var = $CanvasLayer2/Death
+
 func _ready():
 	$AnimatedSprite2D.play("front_idle")
 
@@ -16,10 +18,9 @@ func _physics_process(delta):
 	enemy_attack()
 	
 	if health <= 0:
-		player_alive = false #go back to menu
-		health = 0
 		print("Player Defeated")
-		self.queue_free()
+		death()
+		health = 100
 
 @warning_ignore("unused_parameter")
 func player_movement(delta):
@@ -93,11 +94,13 @@ func _on_player_hitbox_body_exited(body):
 		
 func enemy_attack():
 	if enemy_inattack_range and enemy_attack_cooldown == true:
-		health = health - 10
+		health = health - 50
 		enemy_attack_cooldown = false
 		$attack_cooldown.start()
 		print(health)
-	
+
+func death():
+	death_var.TogglePaused()
 
 
 func _on_attack_cooldown_timeout():
