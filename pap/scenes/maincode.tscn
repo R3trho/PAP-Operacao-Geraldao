@@ -7,25 +7,18 @@ position = Vector2(4, 1)
 script = ExtResource("1_nms1a")
 
 [node name="Button" type="Button" parent="."]
-offset_left = 128.0
-offset_top = 54.0
-offset_right = 330.0
-offset_bottom = 122.0
+offset_left = 84.0
+offset_top = 37.0
+offset_right = 363.0
+offset_bottom = 120.0
 text = "Play"
 
 [node name="Button2" type="Button" parent="."]
-offset_left = 130.0
-offset_top = 142.0
-offset_right = 330.0
-offset_bottom = 210.0
+offset_left = 85.0
+offset_top = 154.0
+offset_right = 364.0
+offset_bottom = 237.0
 text = "Quit"
-
-[node name="Label" type="Label" parent="."]
-offset_left = 153.0
-offset_top = 8.0
-offset_right = 303.0
-offset_bottom = 31.0
-text = "Operação Geraldão"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
