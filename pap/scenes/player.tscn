@@ -83,8 +83,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4gds8"]
-radius = 11.0
-height = 34.0
+radius = 20.0
+height = 40.0
 
 [node name="player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -114,11 +114,6 @@ shape = SubResource("CapsuleShape2D_4gds8")
 [node name="attack_cooldown" type="Timer" parent="."]
 wait_time = 0.578
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_rokty")]
-visible = false
-
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="Death" parent="CanvasLayer2" instance=ExtResource("11_4jsgj")]
@@ -127,6 +122,11 @@ offset_left = -427.0
 offset_top = -100.0
 offset_right = 726.0
 offset_bottom = 548.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_rokty")]
+visible = false
 
 [node name="deal_attack_timer" type="Timer" parent="."]
 wait_time = 0.056

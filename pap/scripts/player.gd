@@ -120,11 +120,11 @@ func attack():
 		global.player_current_attack = true
 		attack_ip = true
 		if dir == "right":
-			$AnimatedSprite2D.flip_h = true
+			$AnimatedSprite2D.flip_h = false
 			$AnimatedSprite2D.play("side_attack")
 			$deal_attack_timer.start()
 		if dir == "left":
-			$AnimatedSprite2D.flip_h = false
+			$AnimatedSprite2D.flip_h = true
 			$AnimatedSprite2D.play("side_attack")
 			$deal_attack_timer.start()
 		if dir == "down":
