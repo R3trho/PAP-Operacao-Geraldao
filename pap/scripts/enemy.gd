@@ -4,7 +4,7 @@ var speed = 60
 var player_chase = false
 var player = null
 
-var health = 10
+var health = 200
 var player_inattack_zone = false
 
 func _physics_process(delta):

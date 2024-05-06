@@ -135,8 +135,6 @@ func attack():
 			$deal_attack_timer.start()
 		attack_one = false
 
-##Isto não tá a correr bem
-##Desculpa eu sou burro 👌
 func _on_deal_attack_timer_timeout():
 	print ("asd")
 	$deal_attack_timer.stop()

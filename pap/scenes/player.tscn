@@ -132,7 +132,7 @@ shape = SubResource("CapsuleShape2D_t0x0w")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -7)
 sprite_frames = SubResource("SpriteFrames_jcfje")
-animation = &"side_attack"
+animation = &"front_idle"
 offset = Vector2(0, -15)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -163,7 +163,7 @@ offset_bottom = 324.0
 visible = false
 
 [node name="deal_attack_timer" type="Timer" parent="."]
-wait_time = 0.056
+wait_time = 0.192
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
