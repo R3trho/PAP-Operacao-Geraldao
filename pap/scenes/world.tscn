@@ -859,6 +859,12 @@ position = Vector2(140, 183)
 [node name="enemy2" parent="." instance=ExtResource("7_plln5")]
 position = Vector2(316, 165)
 
+[node name="enemy3" parent="." instance=ExtResource("7_plln5")]
+position = Vector2(131, 82)
+
+[node name="enemy4" parent="." instance=ExtResource("7_plln5")]
+position = Vector2(272, 241)
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(136, -23)
 stream = ExtResource("11_xaoor")
