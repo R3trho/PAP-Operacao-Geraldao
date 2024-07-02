@@ -3,12 +3,10 @@ extends Control
 var is_paused = false
 
 func Restart():
-	TogglePaused()
 	get_tree().reload_current_scene()
 	
 	
 func Exit():
-	TogglePaused()
 	get_tree().change_scene_to_file("res://scenes/maincode.tscn")
 
 

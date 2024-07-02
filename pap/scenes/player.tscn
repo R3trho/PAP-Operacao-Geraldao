@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://7wq73vajuirb"]
+[gd_scene load_steps=20 format=3 uid="uid://7wq73vajuirb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_cebk3"]
 [ext_resource type="Texture2D" uid="uid://g4rwfblpc7e8" path="res://back_idle.aseprite" id="2_2hlwp"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bxsltieu1m16v" path="res://front_idle.aseprite" id="5_3se3j"]
 [ext_resource type="Texture2D" uid="uid://dk1q16gie3tt6" path="res://front_walk.aseprite" id="6_b0yfl"]
 [ext_resource type="Texture2D" uid="uid://la8ipst14d62" path="res://front_walk2.aseprite" id="7_sfxwi"]
+[ext_resource type="Texture2D" uid="uid://ci7mw2yqemich" path="res://spritestemplate/characters/player.png" id="8_8t65i"]
 [ext_resource type="Texture2D" uid="uid://crctqtilhpod0" path="res://side_idle.aseprite" id="8_kvlyh"]
 [ext_resource type="Texture2D" uid="uid://bd1usf1q4awv8" path="res://side_walk.aseprite" id="9_4268v"]
 [ext_resource type="PackedScene" uid="uid://dd1neo5i16f2j" path="res://scenes/pause_menu.tscn" id="10_rokty"]
@@ -15,6 +16,22 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0x0w"]
 radius = 6.0
 height = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwobg"]
+atlas = ExtResource("8_8t65i")
+region = Rect2(0, 336, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk2l6"]
+atlas = ExtResource("8_8t65i")
+region = Rect2(48, 336, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_krhx8"]
+atlas = ExtResource("8_8t65i")
+region = Rect2(96, 336, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awt31"]
+atlas = ExtResource("8_8t65i")
+region = Rect2(144, 336, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jcfje"]
 animations = [{
@@ -64,6 +81,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_dwobg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk2l6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_krhx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awt31")
+}],
+"loop": true,
+"name": &"side_attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("8_kvlyh")
 }],
 "loop": true,
@@ -86,7 +120,7 @@ animations = [{
 radius = 20.0
 height = 40.0
 
-[node name="player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 3
 script = ExtResource("1_cebk3")
@@ -98,7 +132,8 @@ shape = SubResource("CapsuleShape2D_t0x0w")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -7)
 sprite_frames = SubResource("SpriteFrames_jcfje")
-animation = &"front_idle"
+animation = &"side_attack"
+frame_progress = 0.311759
 offset = Vector2(0, -15)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -118,6 +153,13 @@ wait_time = 0.578
 
 [node name="Death" parent="CanvasLayer2" instance=ExtResource("11_4jsgj")]
 visible = false
+<<<<<<< HEAD
+=======
+offset_left = -579.0
+offset_top = -324.0
+offset_right = 574.0
+offset_bottom = 324.0
+>>>>>>> 1530f556fb2a7bde0c130bcd31309a551c3a5f23
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -125,7 +167,7 @@ visible = false
 visible = false
 
 [node name="deal_attack_timer" type="Timer" parent="."]
-wait_time = 0.056
+wait_time = 0.663
 
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
