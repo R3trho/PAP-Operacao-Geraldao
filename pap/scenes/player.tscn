@@ -153,10 +153,13 @@ wait_time = 0.578
 
 [node name="Death" parent="CanvasLayer2" instance=ExtResource("11_4jsgj")]
 visible = false
+<<<<<<< HEAD
+=======
 offset_left = -579.0
 offset_top = -324.0
 offset_right = 574.0
 offset_bottom = 324.0
+>>>>>>> 1530f556fb2a7bde0c130bcd31309a551c3a5f23
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
